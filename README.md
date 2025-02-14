@@ -22,8 +22,6 @@ git clone https://github.com/SirSerow/file_value_check.git
 
 **Warning**: To run the simulation, you need to have `iverilog` and `gtkwave` installed on your system. If you are using WSL, run you can the simulation in WSL and view the waveform in Windows GUI using `gtkwave`:
 
-```bash
-
 To run the simulation, execute the following commands:
 
 ```bash
