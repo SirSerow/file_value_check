@@ -91,22 +91,13 @@ module downcounter_7seg_tb;
         // Then after each "1-second" pulse (which in sim is TICKS_PER_SEC cycles),
         // it decrements from 59..0.
 
-        // We'll compare at the moment we *expect* each stable digit to be displayed.
-        // For each second from i=0..59:
-        //   - Compare seg_left, seg_right to expected_59_to_0[i].
-        //   - Then wait for the next "1-second" event.
-
-        // TICKS_PER_SEC in the DUT = (TB_CLK_FREQ_HZ - 1). For TB_CLK_FREQ_HZ=100000, TICKS_PER_SEC=99999.
-        // We'll just wait that many clock edges to see the next digit.
-
-        // But let's do a simpler approach:
         //   We check the current digit,
         //   then do "repeat(TICKS_PER_SEC) @(posedge clk)" to wait 1 second in DUT time.
         //   This is a purely linear approach, but you must ensure it aligns with the
         //   internal one_sec_pulse. We'll add 1 or 2 extra cycles to be safe.
 
         // Because we used 100 kHz for the clock, 1 second = 100k cycles => TICKS_PER_SEC=99999.
-        // Let's define a localparam for that:
+        // Let's define a localparam for that: TB_TICKS_PER_SEC = 99999. It has to be defined in the beginning of the module. 
 
         for (i = 0; i < 60; i = i + 1) begin
             // Compare the current output

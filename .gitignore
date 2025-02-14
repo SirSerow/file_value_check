@@ -1,2 +1,2 @@
-.vcd
-.sim_exec
+*.vcd
+*sim_exec
